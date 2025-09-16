@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romain Bassourou - Statisticien & Informaticien</title>
+  <!-- CSS -->
+  <style>
+    /* Dégradé bleu en fond */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #f4f4f4;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 15px;
+      margin-top: 50px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 { font-size: 3em; color: #e0f7ff; }
+    h2 { font-size: 1.8em; color: #b3e5fc; }
+
+    p, li {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    ul { list-style-type: square; padding-left: 20px; }
+
+    /* Bouton retour en haut */
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #00bfff;
+      color: white;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    #topBtn:hover { background-color: #009acd; }
+
+    /* Animation fade-in sections */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Liens */
+    a { color: #00e5ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+  <div class="container fade-in">
+    <h1>Romain Bassourou</h1>
+    <h2>Statisticien & Informaticien</h2>
+    <p>Bienvenue sur mon site personnel. Je suis spécialisé en analyse statistique, science des données et développement informatique.</p>
+  </div>
+
+  <div class="container fade-in">
+    <h2>Compétences</h2>
+    <ul>
+      <li>Analyse statistique : R, SAS, SPSS, Stata</li>
+      <li>Programmation : Python, Java, PHP, SQL</li>
+      <li>Développement web : HTML, CSS, JavaScript</li>
+    </ul>
+  </div>
+
+  <div class="container fade-in">
+    <h2>Projets</h2>
+    <p>Mes travaux incluent des études épidémiologiques, des applications web et des solutions de gestion de données.</p>
+  </div>
+
+  <div class="container fade-in">
+    <h2>Contact</h2>
+    <p>Email : <a href="mailto:tonemail@example.com">tonemail@example.com</a></p>
+    <p>LinkedIn : <a href="#">Mon profil</a></p>
+  </div>
+
+  <!-- Bouton retour en haut -->
+  <button onclick="topFunction()" id="topBtn" title="Retour en haut">↑</button>
+
+  <!-- JS -->
+  <script>
+    // Bouton retour en haut
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    function topFunction() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Animation fade-in au scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.2
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
+</body>
+</html>
